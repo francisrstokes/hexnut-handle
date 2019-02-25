@@ -35,3 +35,14 @@ app.use(handle.message(messageRecogniser, ctx => {
   ctx.send('Hello to you too!');
 }));
 ```
+### Handling a connection closing
+
+*handle.closing(middlewareFunction)*
+
+```javascript
+const handle = require('hexnut-handle');
+
+app.use(handle.closing(ctx => {
+  // Do some cleanup here if necessary.
+}));
+```

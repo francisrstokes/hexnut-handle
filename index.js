@@ -15,7 +15,15 @@ const message = (handlerCheck, handler) => (ctx, next) => {
   return next();
 };
 
+const closing = handler => (ctx, next) => {
+  if (ctx.isClosing) {
+    return handler(ctx, next);
+  }
+  return next();
+};
+
 module.exports = {
   connect,
-  message
+  message,
+  closing
 };
