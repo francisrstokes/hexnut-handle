@@ -22,19 +22,32 @@ app.use(handle.connect(ctx => {
 }));
 ```
 
+### Handling a message
+
+*handle.message(middlewareFunction)*
+
+```javascript
+const handle = require('hexnut-handle');
+
+app.use(handle.message(ctx => {
+  ctx.send(`You sent: ${ctx.message}`);
+}));
+```
+
 ### Handling a message with a specific format
 
-*handle.message(messageRecogniserFunction, middlewareFunction)*
+*handle.matchMessage(messageRecogniserFunction, middlewareFunction)*
 
 ```javascript
 const handle = require('hexnut-handle');
 
 const messageRecogniser = msg => msg === 'Hello world';
 
-app.use(handle.message(messageRecogniser, ctx => {
+app.use(handle.matchMessage(messageRecogniser, ctx => {
   ctx.send('Hello to you too!');
 }));
 ```
+
 ### Handling a connection closing
 
 *handle.closing(middlewareFunction)*

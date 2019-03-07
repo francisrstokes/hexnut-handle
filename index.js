@@ -5,7 +5,14 @@ const connect = handler => (ctx, next) => {
   return next();
 };
 
-const message = (handlerCheck, handler) => (ctx, next) => {
+const message = handler => (ctx, next) => {
+  if (ctx.isMessage) {
+    return handler(ctx, next);
+  }
+  return next();
+};
+
+const matchMessage = (handlerCheck, handler) => (ctx, next) => {
   if (typeof handlerCheck !== 'function') {
     throw new TypeError('Hexnut Handle Middleware: handlerCheck must be a function');
   }
@@ -25,5 +32,6 @@ const closing = handler => (ctx, next) => {
 module.exports = {
   connect,
   message,
+  matchMessage,
   closing
 };
