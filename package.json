@@ -1,6 +1,6 @@
 {
   "name": "hexnut-handle",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Basic middleware helper for dealing with connections and messages",
   "main": "index.js",
   "scripts": {
